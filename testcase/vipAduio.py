@@ -56,14 +56,12 @@ class Vip(unittest.TestCase):
         AdTest.Ad.test_is_ad(self)
         sleep(5)
         print("点击首页的【今日推荐】的音频进入大咖播放页")
-        #点击的是否为试听音频
-        aduio=self.driver.find_elements_by_id("com.mbalib.android.wiki:id/wikiAudioRecycler")[0].find_elements_by_class_name("android.widget.RelativeLayout")
-        aduioIsVip=aduio[0].find_element_by_id('imageVip')
-        sleep(5)
-        print("音频是否为非试听：",aduioIsVip)
         #用户是否为VIP用户
         isVip=IsVip.isVip(self)
         back.ivBack(self)
+        # 点击的是否为试听音频
+        aduio = self.driver.find_elements_by_id("com.mbalib.android.wiki:id/wikiAudioRecycler")[0].find_elements_by_class_name("android.widget.RelativeLayout")
+        aduioIsVip = aduio[0].find_element_by_id('imageVip')
         if isVip:
             print("点击音频进入大咖播放页")
             aduio[0].find_element_by_id('tv_title').click()
